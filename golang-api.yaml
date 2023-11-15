@@ -21,16 +21,16 @@ spec:
     spec:
       containers:
         - name: golang-api
-          image: mysql:8.1.0
+          image: registry-intl.ap-southeast-3.aliyuncs.com/wicky-dev/mysql:8.1.0
           env:
           - name: MYSQL_ROOT_PASSWORD
-            value: my-secret-pw
+            value: "my-secret-pw"
           - name: MYSQL_DATABASE
-            value: api
+            value: "api"
           - name: MYSQL_USER
-            value: api
+            value: "api"
           - name: MYSQL_PASSWORD
-            value: password123
+            value: "password123"
           ports:
             - containerPort: 3306
       imagePullSecrets:
@@ -78,18 +78,18 @@ spec:
     spec:
       containers:
         - name: golang-api
-          image: golang-api:1.0.0
+          image: registry-intl.ap-southeast-3.aliyuncs.com/wicky-dev/golang-api:1.0.0
           env:
           - name: DB_HOST
-            value: golang-api-db-svc
+            value: "golang-api-db-svc"
           - name: DB_PORT
-            value: 3306
+            value: "3306"
           - name: DB_NAME
-            value: api
+            value: "api"
           - name: DB_USER
-            value: api
+            value: "api"
           - name: DB_PASSWORD
-            value: password123
+            value: "password123"
           ports:
             - containerPort: 8080
       imagePullSecrets:

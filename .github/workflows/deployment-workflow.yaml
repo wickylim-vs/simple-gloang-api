@@ -1,0 +1,73 @@
+name: Application Deployment
+
+on: push 
+
+jobs:
+  Determine-Environment:
+    runs-on: ["self-hosted","non-prod"]
+    outputs:
+      ENVIRONMENT: 
+    steps:
+      - name: Extract environment name
+        id: set_env_variable
+        run: 
+
+  Short-Sha:
+    runs-on: ["self-hosted","non-prod"]
+    outputs:
+      SHORT_SHA: 
+    steps:
+      - name: Get Short Sha
+        id: set_short_sha
+        run: 
+ 
+  Build-Push-Docker-Image:
+    runs-on: ["self-hosted","non-prod"]
+    needs: 
+    steps:
+      - name: Check out repository code
+        uses:
+      - name: Login to ACR
+        uses: 
+        with:
+          login-server: 
+          username: 
+          password: 
+          region-id: 
+          instance-id: 
+      - name: Build image
+        env:
+          IMAGE_TAG: 
+        run: 
+      - name: Push image
+        env:
+          IMAGE_TAG: 
+        run: 
+
+  AKS-Deployment:
+    runs-on: ["self-hosted","non-prod"]
+    needs: 
+    env:
+      ENVIRONMENT: 
+    environment:  
+    steps:
+      - name: Update Image in Deployment
+        uses: 
+        env:
+          IMAGE_TAG: 
+        with:
+         cmd: 
+      - name: Setup ACK
+        uses: 
+        with:
+          access-key-id: 
+          access-key-secret: 
+          cluster-id: 
+      - name: Setup Kubectl
+        uses: 
+      - name: Deploy to ACK
+        run: 
+      - name: Set up Helm
+        uses: 
+      - name: Upgrade chart
+        run: 

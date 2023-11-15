@@ -17,17 +17,16 @@ You may use this simple GoLang API application, to practice for eLeisure 2.0 app
     ```
 
 ### What you can do to practice for eLeisure 2.0 application deployment
-1. Fork this repository, or create a new GitHub repository for this GoLang app
-2. Make the main branch a “protected branch”, so that
+1. Fork this repository, or create a new GitHub repository for this GoLang app (within "gentingmalaysia" organization)
+2. Make sure "gentingmalaysia" organization's self-hosted runners can be used from the new repository
+3. Make the main branch a “protected branch”, so that
     - You will use Pull Request for code changes
-3. Request for new Aliyun resources:
-    - 1 ECS instance (to be used as both Jumphost & action runner)
-    - 1 RDS instance, for MySQL database
-4. Dockerize app, and keep the application Docker image in Aliyun ACR
-5. Deploy the containerized app into Kubernetes (Aliyun ACK eLeisure Dev cluster)
-6. Setup self-hosted GitHub actions runner (on the 1 ECS instance from step #3)
-7. (After steps #1 to #5 is successful) Create GitHub Actions pipeline to automate deployment process
-8. Explore the application platform on Aliyun
-    - Monitor the ACK cluster & application (on Aliyun ACK dashboard or Aliyun Cloud Monitor)
-    - Check application logs (using kubectl commands)
+4. Get the Dockerfile for this GoLang app from the developers
+5. Also, get the Kubernetes deployment yaml files for this GoLang app from the developers
+6. Create GitHub Actions pipeline, by updating the provided template pipeline script (referencing Chowkidar's pipeline) 
+7. Configure GitHub environment, variables, and secrets as required by the pipeline script
+8. Make code changes to trigger the pipeline for deployment, make sure all the steps are successful
+9. Once the app is deployed successfully, explore the application on Aliyun platform
+    - Monitor the ACK cluster & application (on Aliyun ACK dashboard)
+    - Check application logs (using kubectl logs commands)
 

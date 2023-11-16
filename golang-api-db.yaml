@@ -1,0 +1,56 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golang-api-db
+  namespace: default
+  labels:
+    app: golang-api
+    tier: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: golang-api
+      tier: db
+  template:
+    metadata:
+      labels:
+        app: golang-api
+        tier: db
+    spec:
+      containers:
+        - name: golang-api
+          image: mysql:8.1.0
+          env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: "my-secret-pw"
+          - name: MYSQL_DATABASE
+            value: "api"
+          - name: MYSQL_USER
+            value: "api"
+          - name: MYSQL_PASSWORD
+            value: "password123"
+          ports:
+            - containerPort: 3306
+      imagePullSecrets:
+        - name: regcred
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: golang-api-db-svc
+  namespace: default
+  labels:
+    app: golang-api
+    tier: db
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3306
+    targetPort: 3306
+    protocol: TCP
+  selector:
+    app: golang-api
+    tier: db

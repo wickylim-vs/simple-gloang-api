@@ -25,14 +25,12 @@ You may use this simple GoLang API application, to practice for eLeisure 2.0 app
     - You will use Pull Request for code changes
 4. Get the Dockerfile for this GoLang app from the developers
     - Update the base images to use "golang:latest" in gentingmalaysia's ACR registry
-5. Build and push the app image to gentingmalaysia's ACR registry
-6. Also, get the Kubernetes deployment yaml files for this GoLang app from the developers
+5. Also, get the Kubernetes deployment yaml files for this GoLang app from the developers
     - Update the application and database images to use images in gentingmalaysia's ACR registry
-7. On the non-prod jumphost VM, use kubectl apply to try manually deploy to gentingmalaysia's Dev ACK cluster
-8. Create GitHub Actions pipeline, by updating the provided template pipeline script (referencing Chowkidar's pipeline) 
-9. Configure GitHub environment, variables, and secrets as required by the pipeline script
-10. Make code changes to trigger the pipeline for deployment, make sure all the steps are successful
-11. Once the app is deployed successfully, explore the application on Aliyun platform
+6. Create GitHub Actions pipeline, by updating the provided template pipeline script (referencing Chowkidar's pipeline) 
+7. Configure GitHub environment, variables, and secrets as required by the pipeline script
+8. Make code changes to trigger the pipeline for deployment, make sure all the steps are successful
+9. Once the app is deployed successfully, explore the application on Aliyun platform
     - Monitor the ACK cluster & application (on Aliyun ACK dashboard)
     - Check application logs (using kubectl logs commands)
 

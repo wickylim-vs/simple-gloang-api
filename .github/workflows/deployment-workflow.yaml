@@ -66,4 +66,5 @@ jobs:
       - name: Setup Kubectl
         uses: 
       - name: Deploy to ACK
-        run: 
+        run: |
+          kubectl apply -f golang-api.yaml

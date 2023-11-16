@@ -67,7 +67,3 @@ jobs:
         uses: 
       - name: Deploy to ACK
         run: 
-      - name: Set up Helm
-        uses: 
-      - name: Upgrade chart
-        run: 

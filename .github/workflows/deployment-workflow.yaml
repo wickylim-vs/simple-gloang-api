@@ -38,7 +38,8 @@ jobs:
       - name: Build image
         env:
           IMAGE_TAG: 
-        run: 
+        run: |
+          docker build -t ${{ vars.IMAGE_REPO }}/golang-api:$IMAGE_TAG -f Dockerfile .
       - name: Push image
         env:
           IMAGE_TAG: 
@@ -56,7 +57,7 @@ jobs:
         env:
           IMAGE_TAG: 
         with:
-         cmd: 
+         cmd: yq eval 'select(.kind == "Deployment") .spec.template.spec.containers[0].image = "${{ vars.IMAGE_REPO }}/golang-api:${{ env.IMAGE_TAG }}"' ./golang-api.yaml -i
       - name: Setup ACK
         uses: 
         with:
@@ -67,4 +68,5 @@ jobs:
         uses: 
       - name: Deploy to ACK
         run: |
+          kubectl apply -f golang-api-db.yaml
           kubectl apply -f golang-api.yaml
